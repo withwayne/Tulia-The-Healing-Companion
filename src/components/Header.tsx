@@ -73,24 +73,6 @@ const Header = ({ onNavigate }: HeaderProps) => {
                   {item.label}
                 </button>
               ))}
-              
-              {/* Mobile Contact Options */}
-              <div className="border-t border-border/30 pt-4 mt-4">
-                <a
-                  href="https://wa.me/0776149310"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block py-2 px-3 text-foreground/80 hover:text-secondary hover:bg-muted/50 rounded-lg transition-all duration-300"
-                >
-                  WhatsApp
-                </a>
-                <a
-                  href="mailto:kabarajiwayne@gmail.com"
-                  className="block py-2 px-3 text-foreground/80 hover:text-primary hover:bg-muted/50 rounded-lg transition-all duration-300"
-                >
-                  Email
-                </a>
-              </div>
             </div>
           </nav>
         )}
