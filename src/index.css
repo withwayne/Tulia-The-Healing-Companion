@@ -8,38 +8,38 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* New Healing Color Palette */
-    --background: 0 0% 98%; /* Soft White #FAFAFA */
-    --foreground: 0 0% 20%; /* Charcoal Gray #333333 */
+    /* Vibrant Healing Color Palette */
+    --background: 0 0% 99%; /* Soft White #FDFDFD */
+    --foreground: 0 0% 18%; /* Charcoal Text #2E2E2E */
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    --card-foreground: 0 0% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    --popover-foreground: 0 0% 18%;
 
-    /* Soft Lavender Primary */
-    --primary: 240 67% 94%; /* Soft Lavender #E6E6FA */
-    --primary-foreground: 0 0% 20%;
+    /* Sunrise Coral Primary */
+    --primary: 0 100% 70%; /* Sunrise Coral #FF6B6B */
+    --primary-foreground: 0 0% 99%;
 
-    /* Powder Blue Secondary */
-    --secondary: 207 78% 82%; /* Powder Blue #B0D8F2 */
-    --secondary-foreground: 0 0% 20%;
+    /* Fresh Mint Secondary */
+    --secondary: 174 70% 55%; /* Fresh Mint #4ECDC4 */
+    --secondary-foreground: 0 0% 18%;
 
-    /* Warm Sand Muted */
-    --muted: 48 50% 94%; /* Warm Sand #F7F1E3 */
+    /* Warm Gray Muted */
+    --muted: 0 0% 91%; /* Warm Gray #E8E8E8 */
     --muted-foreground: 0 0% 45%;
 
-    /* Pale Sage Accent */
-    --accent: 100 40% 89%; /* Pale Sage #D8EED2 */
-    --accent-foreground: 0 0% 20%;
+    /* Buttercream Yellow Accent */
+    --accent: 50 100% 71%; /* Buttercream Yellow #FFE66D */
+    --accent-foreground: 0 0% 18%;
 
     --destructive: 0 70% 70%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 99%;
 
-    --border: 240 20% 90%;
-    --input: 240 20% 95%;
-    --ring: 240 67% 94%;
+    --border: 0 0% 89%;
+    --input: 0 0% 94%;
+    --ring: 0 100% 70%;
 
     --radius: 0.5rem;
 
@@ -110,21 +110,27 @@ All colors MUST be HSL.
   }
 }
 
-/* Healing Design Tokens */
+/* Vibrant Design Tokens */
 @layer base {
   :root {
-    /* Additional accent colors */
-    --muted-lilac: 270 30% 85%; /* Muted Lilac #C8B8DB */
-    --peach-blush: 25 100% 88%; /* Peach Blush #FFD9C0 */
+    /* Additional accent colors from the palette */
+    --sky-blue: 220 100% 67%; /* Sky Blue #54A0FF */
+    --sky-blue-foreground: 0 0% 99%;
+    --peach-blossom: 20 100% 75%; /* Peach Blossom #FF9F80 */
+    --peach-blossom-foreground: 0 0% 18%;
+    --lavender-mist: 270 50% 70%; /* Lavender Mist #B497D6 */
+    --lavender-mist-foreground: 0 0% 99%;
     
-    /* Gradients */
-    --gradient-healing: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    /* Gradients using the vibrant palette */
+    --gradient-healing: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-warm: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--peach-blossom)));
+    --gradient-fresh: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
     --gradient-soft: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
-    --gradient-warm: linear-gradient(135deg, hsl(var(--muted-lilac)), hsl(var(--peach-blush)));
     
-    /* Shadows */
-    --shadow-soft: 0 4px 20px -8px hsl(var(--primary) / 0.15);
-    --shadow-floating: 0 8px 25px -8px hsl(var(--accent) / 0.2);
+    /* Shadows with vibrant colors */
+    --shadow-soft: 0 4px 20px -8px hsl(var(--primary) / 0.2);
+    --shadow-floating: 0 8px 25px -8px hsl(var(--secondary) / 0.3);
+    --shadow-warm: 0 6px 30px -10px hsl(var(--peach-blossom) / 0.25);
     
     /* Animation timing */
     --transition-soft: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);

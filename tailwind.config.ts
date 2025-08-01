@@ -56,6 +56,14 @@ export default {
 					DEFAULT: 'hsl(var(--sky-blue))',
 					foreground: 'hsl(var(--sky-blue-foreground))'
 				},
+				'peach-blossom': {
+					DEFAULT: 'hsl(var(--peach-blossom))',
+					foreground: 'hsl(var(--peach-blossom-foreground))'
+				},
+				'lavender-mist': {
+					DEFAULT: 'hsl(var(--lavender-mist))',
+					foreground: 'hsl(var(--lavender-mist-foreground))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
