@@ -12,11 +12,11 @@ const Footer = () => {
               Tulia – The Healing Companion
             </h3>
           </div>
-          
+
           <p className="text-lg text-primary font-medium mb-6">
             Created with love for healing hearts 💛
           </p>
-          
+
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Remember: You are not alone in your journey. Every step forward, 
             no matter how small, is a victory worth celebrating.
@@ -30,7 +30,7 @@ const Footer = () => {
           </h4>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-6">
             <a
-              href="mailto:support@tulia-healing.com"
+              href="mailto:kabarajiwayne@gmail.com"
               className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-300"
             >
               <svg
@@ -48,11 +48,11 @@ const Footer = () => {
               </svg>
               <span>Email Support</span>
             </a>
-            
+
             <div className="w-px h-6 bg-border hidden sm:block"></div>
-            
+
             <a
-              href="https://wa.me/your-whatsapp-number"
+              href="https://wa.me/254776149310"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-300"
@@ -67,7 +67,7 @@ const Footer = () => {
               <span>WhatsApp</span>
             </a>
           </div>
-          
+
           <p className="mt-4 text-xs text-muted-foreground">
             If you're experiencing a mental health emergency, please contact your local emergency services or crisis hotline immediately.
           </p>
