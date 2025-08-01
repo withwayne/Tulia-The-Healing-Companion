@@ -32,7 +32,7 @@ const AboutModal = ({ isOpen, onOpenChange }: AboutModalProps) => {
           </p>
           
           <p>
-            At the heart of Tulia is <strong>Imani</strong>, a soft-spoken, AI-powered chatbot designed to listen, uplift, and guide users using the powerful technology of ChatGPT. "Imani" means faith, while "Tulia" means to be still — two values deeply rooted in emotional recovery.
+            At the heart of Tulia is <strong>Imani</strong>, a soft-spoken, AI-powered chatbot designed to listen, uplift, and guide users. "Imani" means faith, while "Tulia" means to be still — two values deeply rooted in emotional recovery.
             Imani is always available — no appointments, no judgments, just a kind presence when you need it most.
           </p>
           
