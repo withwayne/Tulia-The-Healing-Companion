@@ -16,7 +16,7 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hello, I'm Imani. I'm here to listen and support you. How are you feeling today?",
+      text: "Hello, beautiful soul. I'm Imani, your gentle companion here at Tulia. I'm here to listen, support, and walk alongside you on your healing journey. How are you feeling today? 🌸?",
       isUser: false,
       timestamp: new Date()
     }
