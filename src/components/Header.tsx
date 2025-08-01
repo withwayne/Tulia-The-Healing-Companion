@@ -9,9 +9,8 @@ const Header = ({ onNavigate }: HeaderProps) => {
 
   const navItems = [
     { label: 'Home', id: 'home' },
-    { label: 'Affirmations', id: 'affirmations' },
-    { label: 'Talk to Imani', id: 'chat' },
-    { label: 'Contact', id: 'contact' }
+    { label: 'About', id: 'about' },
+    { label: 'Talk to Imani', id: 'chat' }
   ];
 
   return (
