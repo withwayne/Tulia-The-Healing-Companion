@@ -34,24 +34,6 @@ const Header = ({ onNavigate }: HeaderProps) => {
                 {item.label}
               </button>
             ))}
-            
-            {/* Contact Options */}
-            <div className="flex items-center space-x-4 ml-6 border-l border-border/30 pl-6">
-              <a
-                href="https://wa.me/0776149310"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground/80 hover:text-secondary transition-colors duration-300 font-medium"
-              >
-                WhatsApp
-              </a>
-              <a
-                href="mailto:kabarajiwayne@gmail.com"
-                className="text-foreground/80 hover:text-primary transition-colors duration-300 font-medium"
-              >
-                Email
-              </a>
-            </div>
           </nav>
 
           {/* Mobile Menu Button */}
