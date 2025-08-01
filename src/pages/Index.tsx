@@ -1,16 +1,16 @@
 import { useState, useRef } from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
+import AboutModal from '@/components/AboutSection';
 import AffirmationSection from '@/components/AffirmationSection';
 import ChatBot from '@/components/ChatBot';
 import Footer from '@/components/Footer';
 
 const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   
   const homeRef = useRef<HTMLDivElement>(null);
-  const aboutRef = useRef<HTMLDivElement>(null);
   const affirmationsRef = useRef<HTMLDivElement>(null);
 
   const handleNavigation = (section: string) => {
@@ -19,7 +19,7 @@ const Index = () => {
         homeRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
       case 'about':
-        aboutRef.current?.scrollIntoView({ behavior: 'smooth' });
+        setIsAboutOpen(true);
         break;
       case 'chat':
         setIsChatOpen(true);
@@ -44,10 +44,6 @@ const Index = () => {
           <HeroSection onOpenChat={handleOpenChat} />
         </div>
         
-        <div ref={aboutRef}>
-          <AboutSection />
-        </div>
-        
         <div ref={affirmationsRef}>
           <AffirmationSection />
         </div>
@@ -56,6 +52,7 @@ const Index = () => {
       </main>
 
       <ChatBot isOpen={isChatOpen} onToggle={handleToggleChat} />
+      <AboutModal isOpen={isAboutOpen} onOpenChange={setIsAboutOpen} />
     </div>
   );
 };
