@@ -75,7 +75,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-sm text-muted-foreground">
-          <p>© 2024 Tulia – The Healing Companion. Made with care for your wellbeing.</p>
+          <p>© 2025 Tulia – The Healing Companion. Made with care for your wellbeing.</p>
         </div>
 
         {/* Floating Hearts */}
