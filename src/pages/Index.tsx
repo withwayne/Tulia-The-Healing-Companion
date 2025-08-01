@@ -21,9 +21,6 @@ const Index = () => {
       case 'about':
         setIsAboutOpen(true);
         break;
-      case 'chat':
-        setIsChatOpen(true);
-        break;
     }
   };
 

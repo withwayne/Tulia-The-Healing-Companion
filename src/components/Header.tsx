@@ -9,19 +9,15 @@ const Header = ({ onNavigate }: HeaderProps) => {
 
   const navItems = [
     { label: 'Home', id: 'home' },
-    { label: 'About', id: 'about' },
-    { label: 'Talk to Imani', id: 'chat' }
+    { label: 'About', id: 'about' }
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border shadow-soft">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-semibold text-sm">T</span>
-            </div>
+          {/* Logo - Just Text */}
+          <div className="flex items-center">
             <h1 className="text-xl font-semibold text-foreground">
               Tulia – The Healing Companion
             </h1>
@@ -38,6 +34,24 @@ const Header = ({ onNavigate }: HeaderProps) => {
                 {item.label}
               </button>
             ))}
+            
+            {/* Contact Options */}
+            <div className="flex items-center space-x-4 ml-6 border-l border-border/30 pl-6">
+              <a
+                href="https://wa.me/0776149310"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground/80 hover:text-secondary transition-colors duration-300 font-medium"
+              >
+                WhatsApp
+              </a>
+              <a
+                href="mailto:kabarajiwayne@gmail.com"
+                className="text-foreground/80 hover:text-primary transition-colors duration-300 font-medium"
+              >
+                Email
+              </a>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -63,7 +77,7 @@ const Header = ({ onNavigate }: HeaderProps) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 border-t border-border">
+          <nav className="md:hidden mt-4 pb-4 border-t border-border/30">
             <div className="flex flex-col space-y-2 pt-4">
               {navItems.map((item) => (
                 <button
@@ -77,6 +91,24 @@ const Header = ({ onNavigate }: HeaderProps) => {
                   {item.label}
                 </button>
               ))}
+              
+              {/* Mobile Contact Options */}
+              <div className="border-t border-border/30 pt-4 mt-4">
+                <a
+                  href="https://wa.me/0776149310"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block py-2 px-3 text-foreground/80 hover:text-secondary hover:bg-muted/50 rounded-lg transition-all duration-300"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  href="mailto:kabarajiwayne@gmail.com"
+                  className="block py-2 px-3 text-foreground/80 hover:text-primary hover:bg-muted/50 rounded-lg transition-all duration-300"
+                >
+                  Email
+                </a>
+              </div>
             </div>
           </nav>
         )}
