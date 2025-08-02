@@ -15,14 +15,9 @@ const Footer = () => {
       <div className="container mx-auto max-w-4xl text-center">
         {/* Main Footer Content */}
         <div className="mb-8">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center hover:scale-125 hover:rotate-12 transition-all duration-300 cursor-pointer hover:shadow-lg">
-              <span className="text-primary-foreground font-semibold text-sm hover:animate-pulse">T</span>
-            </div>
-            <h3 className="text-xl font-semibold text-foreground hover:text-primary transition-colors duration-300 cursor-pointer">
-              Tulia – The Healing Companion
-            </h3>
-          </div>
+          <h3 className="text-xl font-semibold text-foreground hover:text-primary transition-colors duration-300 cursor-pointer mb-4">
+            Tulia – The Healing Companion
+          </h3>
 
           <p className="text-lg text-primary font-medium mb-6 hover:scale-105 transition-transform duration-300 cursor-default">
             Created with love for healing hearts 💛

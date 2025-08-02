@@ -59,7 +59,7 @@ const HeroSection = ({ onOpenChat }: HeroSectionProps) => {
 
   return (
     <section 
-      className="min-h-screen flex flex-col items-center justify-center px-4 bg-gradient-to-br from-background via-muted/30 to-accent/20 relative overflow-hidden cursor-crosshair"
+      className="min-h-screen flex flex-col items-center justify-center px-4 bg-gradient-to-br from-background via-muted/30 to-accent/20 relative overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       {/* Animated particles */}
@@ -90,7 +90,7 @@ const HeroSection = ({ onOpenChat }: HeroSectionProps) => {
         {/* Main Headline */}
         <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight hover:scale-105 transition-all duration-500 hover:text-primary cursor-default">
           You're not alone.{' '}
-          <span className="text-primary animate-pulse bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hover:from-secondary hover:to-primary transition-all duration-500">
+          <span className="text-primary animate-pulse">
             Imani
           </span> is here to listen.
         </h1>

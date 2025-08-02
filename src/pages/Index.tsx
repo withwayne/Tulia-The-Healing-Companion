@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import AboutModal from '@/components/AboutSection';
@@ -9,6 +10,7 @@ import Footer from '@/components/Footer';
 const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const navigate = useNavigate();
   
   const homeRef = useRef<HTMLDivElement>(null);
   const affirmationsRef = useRef<HTMLDivElement>(null);
@@ -17,6 +19,9 @@ const Index = () => {
     switch (section) {
       case 'home':
         homeRef.current?.scrollIntoView({ behavior: 'smooth' });
+        break;
+      case 'challenge':
+        navigate('/challenge');
         break;
       case 'about':
         setIsAboutOpen(true);

@@ -19,6 +19,7 @@ const Header = ({ onNavigate }: HeaderProps) => {
 
   const navItems = [
     { label: 'Home', id: 'home' },
+    { label: 'Self-Love Challenge', id: 'challenge' },
     { label: 'About', id: 'about' }
   ];
 
