@@ -21,6 +21,8 @@ const AffirmationSection = () => {
   const [isLiked, setIsLiked] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [heartAnimation, setHeartAnimation] = useState(false);
+  const [shareAnimation, setShareAnimation] = useState(false);
 
   useEffect(() => {
     // Get today's date to ensure same affirmation per day
@@ -65,10 +67,14 @@ const AffirmationSection = () => {
 
   const handleLike = () => {
     setIsLiked(!isLiked);
+    setHeartAnimation(true);
+    setTimeout(() => setHeartAnimation(false), 600);
   };
 
   const handleShare = () => {
     setShowShareMenu(!showShareMenu);
+    setShareAnimation(true);
+    setTimeout(() => setShareAnimation(false), 300);
   };
 
   const handleCopyAffirmation = async () => {
@@ -119,7 +125,13 @@ const AffirmationSection = () => {
             </div>
 
             {/* Affirmation Text */}
-            <blockquote className="text-xl md:text-2xl font-medium text-foreground leading-relaxed mb-6 hover:text-primary transition-colors duration-300 cursor-default select-text">
+            <blockquote 
+              className="text-xl md:text-2xl font-medium text-foreground leading-relaxed mb-6 hover:text-primary transition-all duration-300 cursor-default select-text hover:scale-105 transform"
+              onClick={() => {
+                setHeartAnimation(true);
+                setTimeout(() => setHeartAnimation(false), 600);
+              }}
+            >
               "{dailyAffirmation}"
             </blockquote>
 
@@ -128,12 +140,12 @@ const AffirmationSection = () => {
               {/* Heart/Like Button */}
               <button
                 onClick={handleLike}
-                className={`p-2 rounded-full transition-all duration-300 hover:scale-125 ${
-                  isLiked ? 'text-red-500 bg-red-50' : 'text-primary hover:bg-primary/10'
+                className={`p-3 rounded-full transition-all duration-300 hover:scale-125 ${heartAnimation ? 'animate-bounce' : ''} ${
+                  isLiked ? 'text-red-500 bg-red-50 shadow-lg scale-110' : 'text-primary hover:bg-primary/10 hover:shadow-md'
                 }`}
               >
                 <svg
-                  className={`w-6 h-6 transition-all duration-300 ${isLiked ? 'fill-current animate-pulse' : ''}`}
+                  className={`w-6 h-6 transition-all duration-300 ${isLiked ? 'fill-current animate-pulse scale-125' : ''} ${heartAnimation ? 'animate-bounce' : ''}`}
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -145,7 +157,7 @@ const AffirmationSection = () => {
               <div className="relative">
                 <button
                   onClick={handleShare}
-                  className="p-2 rounded-full text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-125"
+                  className={`p-3 rounded-full text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-125 hover:shadow-md ${shareAnimation ? 'animate-spin' : ''}`}
                 >
                   <svg
                     className="w-6 h-6"

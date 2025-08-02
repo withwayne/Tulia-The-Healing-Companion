@@ -7,16 +7,17 @@ const Footer = () => {
     <footer className="bg-gradient-to-t from-muted/30 to-background py-12 px-4 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-primary rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-10 right-10 w-24 h-24 bg-accent rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-10 left-10 w-32 h-32 bg-primary rounded-full blur-3xl animate-float hover:scale-150 hover:bg-secondary transition-all duration-500 cursor-pointer" />
+        <div className="absolute bottom-10 right-10 w-24 h-24 bg-accent rounded-full blur-3xl animate-float hover:scale-150 hover:bg-primary transition-all duration-500 cursor-pointer" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 w-16 h-16 bg-secondary rounded-full blur-3xl animate-float hover:scale-150 hover:bg-accent transition-all duration-500 cursor-pointer" style={{ animationDelay: '2s' }} />
       </div>
       
       <div className="container mx-auto max-w-4xl text-center">
         {/* Main Footer Content */}
         <div className="mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center hover:scale-125 hover:rotate-12 transition-all duration-300 cursor-pointer">
-              <span className="text-primary-foreground font-semibold text-sm">T</span>
+            <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center hover:scale-125 hover:rotate-12 transition-all duration-300 cursor-pointer hover:shadow-lg">
+              <span className="text-primary-foreground font-semibold text-sm hover:animate-pulse">T</span>
             </div>
             <h3 className="text-xl font-semibold text-foreground hover:text-primary transition-colors duration-300 cursor-pointer">
               Tulia – The Healing Companion

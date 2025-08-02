@@ -1,184 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+:root {
+  /* Primary Colors (Uplifting & Inviting) */
+  --primary: 4 96% 69%;        /* Sunrise Coral #FF6B6B */
+  --primary-foreground: 0 0% 98%;
 
-@layer base {
-  :root {
-    /* Vibrant Healing Color Palette */
-    --background: 0 0% 99%; /* Soft White #FDFDFD */
-    --foreground: 0 0% 18%; /* Charcoal Text #2E2E2E */
+  --secondary: 174 55% 60%;     /* Fresh Mint #4ECDC4 */
+  --secondary-foreground: 0 0% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 18%;
+  --accent: 49 100% 71%;       /* Buttercream Yellow #FFE66D */
+  --accent-foreground: 0 0% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 18%;
+  /* Accent Colors (For CTA buttons, highlights, and animations) */
+  --sky-blue: 218 100% 66%;    /* Sky Blue #54A0FF */
+  --peach: 20 100% 75%;        /* Peach Blossom #FF9F80 */
+  --lavender: 262 39% 71%;     /* Lavender Mist #B497D6 */
 
-    /* Sunrise Coral Primary */
-    --primary: 0 100% 70%; /* Sunrise Coral #FF6B6B */
-    --primary-foreground: 0 0% 99%;
+  /* Neutral Colors (For backgrounds and soft contrast) */
+  --background: 0 0% 99%;      /* Soft White #FDFDFD */
+  --foreground: 0 0% 18%;      /* Charcoal Text #2E2E2E */
 
-    /* Fresh Mint Secondary */
-    --secondary: 174 70% 55%; /* Fresh Mint #4ECDC4 */
-    --secondary-foreground: 0 0% 18%;
+  --muted: 0 0% 91%;           /* Warm Gray #E8E8E8 */
+  --muted-foreground: 0 0% 45%;
 
-    /* Warm Gray Muted */
-    --muted: 0 0% 91%; /* Warm Gray #E8E8E8 */
-    --muted-foreground: 0 0% 45%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 18%;
 
-    /* Buttercream Yellow Accent */
-    --accent: 50 100% 71%; /* Buttercream Yellow #FFE66D */
-    --accent-foreground: 0 0% 18%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 18%;
 
-    --destructive: 0 70% 70%;
-    --destructive-foreground: 0 0% 99%;
+  --border: 0 0% 91%;
+  --input: 0 0% 91%;
 
-    --border: 0 0% 89%;
-    --input: 0 0% 94%;
-    --ring: 0 100% 70%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
 
-    --radius: 0.5rem;
+  --ring: 4 96% 69%;
 
-    --sidebar-background: 0 0% 98%;
+  --radius: 0.75rem;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+  /* Custom gradients */
+  --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--peach)));
+  --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
 
-    --sidebar-primary: 240 5.9% 10%;
+  /* Shadows */
+  --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+  --shadow-floating: 0 4px 20px -4px hsl(var(--primary) / 0.25);
+  --shadow-glow: 0 0 40px hsl(var(--accent) / 0.4);
 
-    --sidebar-primary-foreground: 0 0% 98%;
+  /* Animations */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-    --sidebar-accent: 240 4.8% 95.9%;
+.dark {
+  --background: 0 0% 7%;
+  --foreground: 0 0% 98%;
 
-    --sidebar-accent-foreground: 240 5.9% 10%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 63%;
 
-    --sidebar-border: 220 13% 91%;
+  --card: 0 0% 9%;
+  --card-foreground: 0 0% 98%;
 
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+  --popover: 0 0% 9%;
+  --popover-foreground: 0 0% 98%;
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+  --primary: 4 96% 69%;
+  --primary-foreground: 0 0% 15%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+  --secondary: 174 55% 60%;
+  --secondary-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+  --accent: 49 100% 71%;
+  --accent-foreground: 0 0% 15%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+  --ring: 4 96% 69%;
 }
 
 @layer base {
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-/* Vibrant Design Tokens */
-@layer base {
-  :root {
-    /* Additional accent colors from the palette */
-    --sky-blue: 220 100% 67%; /* Sky Blue #54A0FF */
-    --sky-blue-foreground: 0 0% 99%;
-    --peach-blossom: 20 100% 75%; /* Peach Blossom #FF9F80 */
-    --peach-blossom-foreground: 0 0% 18%;
-    --lavender-mist: 270 50% 70%; /* Lavender Mist #B497D6 */
-    --lavender-mist-foreground: 0 0% 99%;
-    
-    /* Gradients using the vibrant palette */
-    --gradient-healing: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
-    --gradient-warm: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--peach-blossom)));
-    --gradient-fresh: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
-    --gradient-soft: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
-    
-    /* Shadows with vibrant colors */
-    --shadow-soft: 0 4px 20px -8px hsl(var(--primary) / 0.2);
-    --shadow-floating: 0 8px 25px -8px hsl(var(--secondary) / 0.3);
-    --shadow-warm: 0 6px 30px -10px hsl(var(--peach-blossom) / 0.25);
-    
-    /* Animation timing */
-    --transition-soft: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-}
-
-/* Custom Healing Animations */
 @layer utilities {
+  /* Enhanced animation utilities */
   .animate-fade-in-slow {
-    animation: fadeInSlow 1s ease-out;
-  }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  .animate-typing {
-    overflow: hidden;
-    border-right: 2px solid hsl(var(--primary));
-    white-space: nowrap;
-    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+    animation: fadeInSlow 1.5s ease-out forwards;
   }
   
   .animate-scale-in {
-    animation: scaleIn 0.3s ease-out;
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-typing {
+    animation: typing 2s steps(30, end), blink-caret 0.75s step-end infinite;
   }
   
   .animate-bounce-gentle {
-    animation: bounceGentle 2s ease-in-out infinite;
-  }
-  
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
+    animation: bounceGentle 2s infinite;
   }
   
   .animate-wiggle {
-    animation: wiggle 1s ease-in-out infinite;
+    animation: wiggle 0.5s ease-in-out;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .interactive-element {
+    transition: var(--transition-smooth);
+  }
+
+  .interactive-element:hover {
+    filter: brightness(1.2) saturate(1.1);
+  }
+  
+  /* Shadow utilities */
+  .shadow-floating {
+    box-shadow: var(--shadow-floating);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Interactive card enhancement */
+  .interactive-card {
+    transition: var(--transition-smooth);
+  }
+
+  .interactive-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elegant);
   }
 }
 
 @keyframes fadeInSlow {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -187,7 +190,7 @@ All colors MUST be HSL.
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-20px);
   }
 }
 
@@ -209,77 +212,53 @@ All colors MUST be HSL.
   }
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
+@keyframes bounceGentle {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
   }
 }
 
-@keyframes bounceGentle {
+@keyframes wiggle {
   0%, 100% {
-    transform: translateY(0);
+    transform: rotate(0deg);
   }
-  50% {
-    transform: translateY(-5px);
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
   }
 }
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
   }
   to {
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.6);
   }
 }
 
-@keyframes wiggle {
-  0%, 7% {
-    transform: rotateZ(0);
-  }
-  15% {
-    transform: rotateZ(-15deg);
-  }
-  20% {
-    transform: rotateZ(10deg);
-  }
-  25% {
-    transform: rotateZ(-10deg);
-  }
-  30% {
-    transform: rotateZ(6deg);
-  }
-  35% {
-    transform: rotateZ(-4deg);
-  }
-  40%, 100% {
-    transform: rotateZ(0);
-  }
+/* Enhanced interactive components */
+.story-link {
+  @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
 }
 
-/* Interactive hover effects */
-@layer utilities {
-  .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .hover-lift:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px -5px hsl(var(--primary) / 0.3);
-  }
-  
-  .interactive-card {
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .interactive-card:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 25px -8px hsl(var(--primary) / 0.4);
+.hover-scale {
+  @apply transition-transform duration-200 hover:scale-105;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
