@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 const Footer = () => {
   const [hoveredContact, setHoveredContact] = useState<string | null>(null);
 
