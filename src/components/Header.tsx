@@ -6,6 +6,16 @@ interface HeaderProps {
 
 const Header = ({ onNavigate }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { label: 'Home', id: 'home' },
@@ -13,12 +23,16 @@ const Header = ({ onNavigate }: HeaderProps) => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      scrolled 
+        ? 'bg-background/95 backdrop-blur-md shadow-lg border-b border-border/50' 
+        : 'bg-transparent backdrop-blur-sm'
+    }`}>
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo - Just Text */}
           <div className="flex items-center">
-            <h1 className="text-xl font-semibold text-foreground">
+            <h1 className="text-xl font-semibold text-foreground hover:text-primary transition-colors duration-300 cursor-pointer">
               Tulia – The Healing Companion
             </h1>
           </div>
@@ -29,9 +43,10 @@ const Header = ({ onNavigate }: HeaderProps) => {
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300 font-medium"
+                className="text-foreground/80 hover:text-primary transition-all duration-300 font-medium hover:scale-105 relative group"
               >
-                {item.label}
+                <span className="relative z-10">{item.label}</span>
+                <div className="absolute inset-0 bg-primary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" />
               </button>
             ))}
           </nav>
@@ -39,10 +54,10 @@ const Header = ({ onNavigate }: HeaderProps) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-muted text-foreground"
+            className="md:hidden p-2 rounded-lg bg-muted text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
           >
             <svg
-              className="w-6 h-6"
+              className="w-6 h-6 transition-transform duration-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -59,7 +74,7 @@ const Header = ({ onNavigate }: HeaderProps) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 border-t border-border/30">
+          <nav className="md:hidden mt-4 pb-4 border-t border-border/30 animate-scale-in">
             <div className="flex flex-col space-y-2 pt-4">
               {navItems.map((item) => (
                 <button
@@ -68,7 +83,7 @@ const Header = ({ onNavigate }: HeaderProps) => {
                     onNavigate(item.id);
                     setIsMenuOpen(false);
                   }}
-                  className="text-left py-2 px-3 text-foreground/80 hover:text-primary hover:bg-muted/50 rounded-lg transition-all duration-300"
+                  className="text-left py-2 px-3 text-foreground/80 hover:text-primary hover:bg-muted/50 rounded-lg transition-all duration-300 hover:scale-105 hover:translate-x-2"
                 >
                   {item.label}
                 </button>

@@ -18,6 +18,9 @@ const affirmations = [
 const AffirmationSection = () => {
   const [dailyAffirmation, setDailyAffirmation] = useState('');
   const [isVisible, setIsVisible] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [showShareMenu, setShowShareMenu] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
     // Get today's date to ensure same affirmation per day
@@ -60,6 +63,24 @@ const AffirmationSection = () => {
     };
   }, []);
 
+  const handleLike = () => {
+    setIsLiked(!isLiked);
+  };
+
+  const handleShare = () => {
+    setShowShareMenu(!showShareMenu);
+  };
+
+  const handleCopyAffirmation = async () => {
+    try {
+      await navigator.clipboard.writeText(`"${dailyAffirmation}" - Tulia`);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
   return (
     <section 
       id="affirmation-section"
@@ -79,14 +100,14 @@ const AffirmationSection = () => {
           }`}
         >
           {/* Floating Card */}
-          <div className="relative bg-gradient-to-br from-card to-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-floating border border-border/50">
+          <div className="relative bg-gradient-to-br from-card to-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-floating border border-border/50 hover:shadow-lg hover:scale-105 transition-all duration-500 group">
             {/* Decorative Elements */}
-            <div className="absolute -top-4 -left-4 w-8 h-8 bg-primary/20 rounded-full blur-sm"></div>
-            <div className="absolute -bottom-4 -right-4 w-6 h-6 bg-accent/30 rounded-full blur-sm"></div>
+            <div className="absolute -top-4 -left-4 w-8 h-8 bg-primary/20 rounded-full blur-sm group-hover:scale-150 transition-transform duration-500"></div>
+            <div className="absolute -bottom-4 -right-4 w-6 h-6 bg-accent/30 rounded-full blur-sm group-hover:scale-150 transition-transform duration-500"></div>
             
             {/* Quote Icon */}
             <div className="flex justify-center mb-6">
-              <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center hover:rotate-12 transition-transform duration-300">
                 <svg
                   className="w-6 h-6 text-primary-foreground"
                   fill="currentColor"
@@ -98,26 +119,64 @@ const AffirmationSection = () => {
             </div>
 
             {/* Affirmation Text */}
-            <blockquote className="text-xl md:text-2xl font-medium text-foreground leading-relaxed mb-6">
+            <blockquote className="text-xl md:text-2xl font-medium text-foreground leading-relaxed mb-6 hover:text-primary transition-colors duration-300 cursor-default select-text">
               "{dailyAffirmation}"
             </blockquote>
 
-            {/* Heart Icon */}
-            <div className="flex justify-center">
-              <div className="text-primary animate-float">
+            {/* Interactive Actions */}
+            <div className="flex justify-center items-center space-x-4 mb-4">
+              {/* Heart/Like Button */}
+              <button
+                onClick={handleLike}
+                className={`p-2 rounded-full transition-all duration-300 hover:scale-125 ${
+                  isLiked ? 'text-red-500 bg-red-50' : 'text-primary hover:bg-primary/10'
+                }`}
+              >
                 <svg
-                  className="w-6 h-6"
+                  className={`w-6 h-6 transition-all duration-300 ${isLiked ? 'fill-current animate-pulse' : ''}`}
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                 </svg>
+              </button>
+
+              {/* Share Button */}
+              <div className="relative">
+                <button
+                  onClick={handleShare}
+                  className="p-2 rounded-full text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-125"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+                  </svg>
+                </button>
+
+                {/* Share Menu */}
+                {showShareMenu && (
+                  <div className="absolute top-full mt-2 right-0 bg-white rounded-lg shadow-lg border p-2 z-10 animate-scale-in">
+                    <button
+                      onClick={handleCopyAffirmation}
+                      className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors duration-200 w-full text-left"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                      <span>{copySuccess ? 'Copied!' : 'Copy'}</span>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
 
           {/* Refresh Reminder */}
-          <p className="mt-6 text-sm text-muted-foreground">
+          <p className="mt-6 text-sm text-muted-foreground hover:text-primary transition-colors duration-300 cursor-default">
             A new affirmation will appear tomorrow 🌅
           </p>
         </div>

@@ -23,6 +23,7 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
   ]);
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -53,6 +54,7 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
     setMessages(prev => [...prev, userMessage]);
     setInputText('');
     setIsLoading(true);
+    setIsTyping(true);
 
     try {
       // Placeholder for n8n webhook - replace with actual endpoint later
@@ -71,6 +73,9 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
 
       if (response.ok) {
         const data = await response.json();
+        // Simulate typing delay for better UX
+        setTimeout(() => {
+          setIsTyping(false);
         const botMessage: Message = {
           id: (Date.now() + 1).toString(),
           text: data.response || "I'm here for you. Could you tell me more about how you're feeling?",
@@ -78,8 +83,11 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
           timestamp: new Date()
         };
         setMessages(prev => [...prev, botMessage]);
+        }, 1500);
       } else {
         // Fallback response if webhook fails
+        setTimeout(() => {
+          setIsTyping(false);
         const fallbackMessage: Message = {
           id: (Date.now() + 1).toString(),
           text: "I'm here for you. Could you tell me more about how you're feeling? (Note: Chat connection will be available soon)",
@@ -87,9 +95,12 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
           timestamp: new Date()
         };
         setMessages(prev => [...prev, fallbackMessage]);
+        }, 1500);
       }
     } catch (error) {
       // Fallback response for network errors
+      setTimeout(() => {
+        setIsTyping(false);
       const fallbackMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: "I'm here for you. Could you tell me more about how you're feeling? (Note: Chat connection will be available soon)",
@@ -97,6 +108,7 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
         timestamp: new Date()
       };
       setMessages(prev => [...prev, fallbackMessage]);
+      }, 1500);
     } finally {
       setIsLoading(false);
     }
@@ -114,12 +126,17 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
       {/* Floating Chat Button */}
       <button
         onClick={onToggle}
-        className={`fixed bottom-6 right-6 z-50 w-16 h-16 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-full shadow-floating hover:shadow-lg transform hover:scale-110 transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-50 w-16 h-16 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-full shadow-floating hover:shadow-lg transform hover:scale-110 transition-all duration-300 group ${
           isOpen ? 'rotate-45' : 'animate-float'
         }`}
       >
+        {/* Pulse effect when not open */}
+        {!isOpen && (
+          <div className="absolute inset-0 rounded-full bg-primary/30 animate-ping" />
+        )}
+        
         <svg
-          className="w-8 h-8 mx-auto"
+          className="w-8 h-8 mx-auto relative z-10 group-hover:scale-110 transition-transform duration-300"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -144,15 +161,21 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-40 w-80 md:w-96 h-96 bg-card border border-border rounded-2xl shadow-floating flex flex-col overflow-hidden animate-scale-in">
+        <div className="fixed bottom-24 right-6 z-40 w-80 md:w-96 h-96 bg-card border border-border rounded-2xl shadow-floating flex flex-col overflow-hidden animate-scale-in backdrop-blur-sm">
           {/* Chat Header */}
-          <div className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground p-4 flex items-center space-x-3">
-            <div className="w-10 h-10 bg-primary-foreground/20 rounded-full flex items-center justify-center">
+          <div className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground p-4 flex items-center space-x-3 relative overflow-hidden">
+            {/* Animated background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 animate-pulse" />
+            
+            <div className="w-10 h-10 bg-primary-foreground/20 rounded-full flex items-center justify-center relative z-10 animate-pulse">
               <span className="text-sm font-semibold">I</span>
             </div>
-            <div>
+            <div className="relative z-10">
               <h3 className="font-semibold">Imani</h3>
-              <p className="text-xs opacity-90">Your healing companion</p>
+              <p className="text-xs opacity-90 flex items-center">
+                <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+                Your healing companion
+              </p>
             </div>
           </div>
 
@@ -161,13 +184,13 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
+                className={`flex ${message.isUser ? 'justify-end' : 'justify-start'} animate-fade-in-slow`}
               >
                 <div
-                  className={`max-w-[80%] px-4 py-2 rounded-2xl ${
+                  className={`max-w-[80%] px-4 py-2 rounded-2xl transition-all duration-300 hover:scale-105 ${
                     message.isUser
-                      ? 'bg-primary text-primary-foreground rounded-br-md'
-                      : 'bg-muted text-foreground rounded-bl-md'
+                      ? 'bg-primary text-primary-foreground rounded-br-md shadow-md'
+                      : 'bg-muted text-foreground rounded-bl-md shadow-sm'
                   }`}
                 >
                   <p className="text-sm leading-relaxed">{message.text}</p>
@@ -177,9 +200,9 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
                 </div>
               </div>
             ))}
-            {isLoading && (
+            {(isLoading || isTyping) && (
               <div className="flex justify-start">
-                <div className="bg-muted text-foreground px-4 py-2 rounded-2xl rounded-bl-md">
+                <div className="bg-muted text-foreground px-4 py-2 rounded-2xl rounded-bl-md animate-pulse">
                   <div className="flex space-x-1">
                     <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce"></div>
                     <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -192,7 +215,7 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
           </div>
 
           {/* Input Area */}
-          <div className="p-4 border-t border-border bg-background/50">
+          <div className="p-4 border-t border-border bg-background/50 backdrop-blur-sm">
             <div className="flex space-x-2">
               <input
                 ref={inputRef}
@@ -201,16 +224,16 @@ const ChatBot = ({ isOpen, onToggle }: ChatBotProps) => {
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Share what's on your mind..."
-                className="flex-1 px-4 py-2 bg-input border border-border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
+                className="flex-1 px-4 py-2 bg-input border border-border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 hover:border-primary/30"
                 disabled={isLoading}
               />
               <button
                 onClick={handleSendMessage}
                 disabled={!inputText.trim() || isLoading}
-                className="w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center hover:bg-primary/80 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center hover:bg-primary/80 hover:scale-110 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 <svg
-                  className="w-4 h-4"
+                  className="w-4 h-4 transform hover:rotate-12 transition-transform duration-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

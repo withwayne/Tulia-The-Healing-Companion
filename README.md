@@ -1,73 +1,94 @@
-# Welcome to your Lovable project
+# Tulia – The Healing Companion
 
-## Project info
+A compassionate emotional support platform where you're never alone. Imani is here to listen and guide you through your healing journey.
 
-**URL**: https://lovable.dev/projects/ebf4947a-bb1c-4e00-9682-1c25e23371ca
+## About
 
-## How can I edit this code?
+Tulia is a digital sanctuary designed to provide comfort, support, and understanding to anyone navigating emotional challenges. Built with care and empathy, it offers a safe space for healing and growth.
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+- **Imani Chat Companion**: AI-powered emotional support chatbot
+- **Daily Affirmations**: Personalized healing messages
+- **Interactive Elements**: Engaging animations and micro-interactions
+- **Responsive Design**: Beautiful experience across all devices
+- **Accessibility**: Designed with inclusivity in mind
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ebf4947a-bb1c-4e00-9682-1c25e23371ca) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js (v16 or higher)
+- npm or yarn
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository
+```bash
+git clone <your-repository-url>
+cd tulia-healing-companion
+```
 
-Follow these steps:
+2. Install dependencies
+```bash
+npm install
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open your browser and navigate to `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Technology Stack
 
-**Use GitHub Codespaces**
+- **Frontend**: React 18 with TypeScript
+- **Styling**: Tailwind CSS with custom design system
+- **UI Components**: Radix UI primitives
+- **Build Tool**: Vite
+- **Icons**: Lucide React
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # Base UI components
+│   ├── Header.tsx      # Navigation header
+│   ├── HeroSection.tsx # Landing section
+│   ├── ChatBot.tsx     # Chat interface
+│   └── ...
+├── pages/              # Page components
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+└── index.css          # Global styles and design tokens
+```
 
-This project is built with:
+## Design Philosophy
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Tulia follows a healing-centered design approach with:
+- Warm, vibrant colors that promote emotional wellness
+- Gentle animations and micro-interactions
+- Accessible typography and spacing
+- Intuitive user experience focused on comfort
 
-## How can I deploy this project?
+## Contributing
 
-Simply open [Lovable](https://lovable.dev/projects/ebf4947a-bb1c-4e00-9682-1c25e23371ca) and click on Share -> Publish.
+We welcome contributions that align with our mission of providing emotional support and healing. Please ensure all changes maintain the compassionate and inclusive nature of the platform.
 
-## Can I connect a custom domain to my Lovable project?
+## License
 
-Yes, you can!
+This project is created with love for healing hearts. Please use responsibly and with care for those seeking emotional support.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Support
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+If you need additional support beyond what Tulia provides, please reach out to:
+- Email: kabarajiwayne@gmail.com
+- WhatsApp: +254776149310
+
+Remember: If you're experiencing a mental health emergency, please contact your local emergency services or crisis hotline immediately.
+
+---
+
+*Made with 💛 for healing hearts everywhere*
