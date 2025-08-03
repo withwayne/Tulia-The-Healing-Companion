@@ -65,6 +65,10 @@ export default {
           DEFAULT: '#B497D6',
           foreground: '#FDFDFD'
         },
+        'sky-blue': {
+          DEFAULT: '#54A0FF',
+          foreground: '#FDFDFD'
+        },
         sidebar: {
           DEFAULT: '#FDFDFD',
           foreground: '#2E2E2E',
