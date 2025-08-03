@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import AboutModal from '@/components/AboutSection';
 import AffirmationSection from '@/components/AffirmationSection';
+import NotebookSection from '@/components/NotebookSection';
 import ChatBot from '@/components/ChatBot';
 import Footer from '@/components/Footer';
 
@@ -49,6 +50,8 @@ const Index = () => {
         <div ref={affirmationsRef}>
           <AffirmationSection />
         </div>
+        
+        <NotebookSection />
         
         <Footer />
       </main>

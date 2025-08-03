@@ -106,14 +106,11 @@ const AffirmationSection = () => {
           }`}
         >
           {/* Floating Card */}
-          <div className="relative bg-gradient-to-br from-card to-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-floating border border-border/50 hover:shadow-lg hover:scale-105 transition-all duration-500 group">
-            {/* Decorative Elements */}
-            <div className="absolute -top-4 -left-4 w-8 h-8 bg-primary/20 rounded-full blur-sm group-hover:scale-150 transition-transform duration-500"></div>
-            <div className="absolute -bottom-4 -right-4 w-6 h-6 bg-accent/30 rounded-full blur-sm group-hover:scale-150 transition-transform duration-500"></div>
+          <div className="relative bg-gradient-to-br from-card to-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-floating border border-border/50">
             
             {/* Quote Icon */}
             <div className="flex justify-center mb-6">
-              <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center hover:rotate-12 transition-transform duration-300">
+              <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
                 <svg
                   className="w-6 h-6 text-primary-foreground"
                   fill="currentColor"
@@ -125,13 +122,7 @@ const AffirmationSection = () => {
             </div>
 
             {/* Affirmation Text */}
-            <blockquote 
-              className="text-xl md:text-2xl font-medium text-foreground leading-relaxed mb-6 hover:text-primary transition-all duration-300 cursor-default select-text hover:scale-105 transform"
-              onClick={() => {
-                setHeartAnimation(true);
-                setTimeout(() => setHeartAnimation(false), 600);
-              }}
-            >
+            <blockquote className="text-xl md:text-2xl font-medium text-foreground leading-relaxed mb-6">
               "{dailyAffirmation}"
             </blockquote>
 
@@ -140,12 +131,12 @@ const AffirmationSection = () => {
               {/* Heart/Like Button */}
               <button
                 onClick={handleLike}
-                className={`p-3 rounded-full transition-all duration-300 hover:scale-125 ${heartAnimation ? 'animate-bounce' : ''} ${
-                  isLiked ? 'text-red-500 bg-red-50 shadow-lg scale-110' : 'text-primary hover:bg-primary/10 hover:shadow-md'
+                className={`p-3 rounded-full transition-all duration-300 ${
+                  isLiked ? 'text-red-500 bg-red-50' : 'text-primary hover:bg-primary/10'
                 }`}
               >
                 <svg
-                  className={`w-6 h-6 transition-all duration-300 ${isLiked ? 'fill-current animate-pulse scale-125' : ''} ${heartAnimation ? 'animate-bounce' : ''}`}
+                  className={`w-6 h-6 ${isLiked ? 'fill-current' : ''}`}
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -157,7 +148,7 @@ const AffirmationSection = () => {
               <div className="relative">
                 <button
                   onClick={handleShare}
-                  className={`p-3 rounded-full text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-125 hover:shadow-md ${shareAnimation ? 'animate-spin' : ''}`}
+                  className="p-3 rounded-full text-primary hover:bg-primary/10 transition-all duration-300"
                 >
                   <svg
                     className="w-6 h-6"
@@ -188,7 +179,7 @@ const AffirmationSection = () => {
           </div>
 
           {/* Refresh Reminder */}
-          <p className="mt-6 text-sm text-muted-foreground hover:text-primary transition-colors duration-300 cursor-default">
+          <p className="mt-6 text-sm text-muted-foreground">
             A new affirmation will appear tomorrow 🌅
           </p>
         </div>
