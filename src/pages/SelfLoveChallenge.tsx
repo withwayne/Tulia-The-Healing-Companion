@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Heart, Calendar, CheckCircle2, RotateCcw } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AboutModal from '@/components/AboutSection';
 
 const challenges = [
   "Take a selfie and smile at yourself with genuine love",
@@ -48,6 +49,7 @@ const SelfLoveChallenge = ({ onNavigate }: SelfLoveChallengeProps) => {
   const [completedDate, setCompletedDate] = useState<string | null>(null);
   const [challengeIndex, setChallengeIndex] = useState(0);
   const [showCelebration, setShowCelebration] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
 
   useEffect(() => {
     // Get today's challenge based on date
@@ -103,6 +105,8 @@ const SelfLoveChallenge = ({ onNavigate }: SelfLoveChallengeProps) => {
           // Already on challenge page
         } else if (section === 'targets') {
           navigate('/targets');
+        } else if (section === 'about') {
+          setIsAboutOpen(true);
         } else {
           onNavigate(section);
         }
@@ -242,6 +246,7 @@ const SelfLoveChallenge = ({ onNavigate }: SelfLoveChallengeProps) => {
       </main>
 
       <Footer />
+      <AboutModal isOpen={isAboutOpen} onOpenChange={setIsAboutOpen} />
     </div>
   );
 };

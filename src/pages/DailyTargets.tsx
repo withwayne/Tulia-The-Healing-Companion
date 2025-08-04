@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Plus, X } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AboutModal from '@/components/AboutSection';
 
 interface Target {
   id: string;
@@ -20,6 +21,7 @@ const DailyTargets = ({ onNavigate }: DailyTargetsProps) => {
   const [targets, setTargets] = useState<Target[]>([]);
   const [newTargetText, setNewTargetText] = useState('');
   const [isAddingTarget, setIsAddingTarget] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
 
   useEffect(() => {
     // Load targets from localStorage
@@ -86,6 +88,8 @@ const DailyTargets = ({ onNavigate }: DailyTargetsProps) => {
           navigate('/challenge');
         } else if (section === 'targets') {
           // Already on targets page
+        } else if (section === 'about') {
+          setIsAboutOpen(true);
         } else {
           onNavigate(section);
         }
@@ -95,10 +99,10 @@ const DailyTargets = ({ onNavigate }: DailyTargetsProps) => {
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Header Section */}
           <div className="text-center mb-12 animate-fade-in-slow">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Daily Targets
             </h1>
-            <p className="text-lg text-white/90 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Write down your goals and check them off as you achieve them. 
               Every small step counts on your journey to wellness.
             </p>
@@ -270,11 +274,11 @@ const DailyTargets = ({ onNavigate }: DailyTargetsProps) => {
           </div>
 
           {/* Motivational Section */}
-          <div className="text-center mt-12 bg-white/20 backdrop-blur-sm rounded-3xl p-8 border border-white/30">
-            <h3 className="text-2xl font-bold text-white mb-4">
+          <div className="text-center mt-12 bg-card/80 backdrop-blur-sm rounded-3xl p-8 border border-border/30">
+            <h3 className="text-2xl font-bold text-foreground mb-4">
               Every Target Achieved is a Victory 🎉
             </h3>
-            <p className="text-lg text-white/90 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Remember, progress isn't about perfection. It's about showing up for yourself, 
               one small goal at a time. Celebrate every checkmark—you're doing amazing!
             </p>
@@ -283,6 +287,7 @@ const DailyTargets = ({ onNavigate }: DailyTargetsProps) => {
       </main>
 
       <Footer />
+      <AboutModal isOpen={isAboutOpen} onOpenChange={setIsAboutOpen} />
     </div>
   );
 };
