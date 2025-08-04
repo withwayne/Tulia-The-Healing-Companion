@@ -101,6 +101,8 @@ const SelfLoveChallenge = ({ onNavigate }: SelfLoveChallengeProps) => {
           navigate('/');
         } else if (section === 'challenge') {
           // Already on challenge page
+        } else if (section === 'targets') {
+          navigate('/targets');
         } else {
           onNavigate(section);
         }
