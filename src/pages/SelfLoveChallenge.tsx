@@ -90,7 +90,12 @@ const SelfLoveChallenge = ({ onNavigate }: SelfLoveChallengeProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div 
+      className="min-h-screen page-challenge color-transition"
+      style={{
+        background: 'linear-gradient(135deg, #a8e6cf20 0%, #88d8a330 25%, #c7ceea20 50%, #a8e6cf15 75%, #88d8a320 100%)'
+      }}
+    >
       <Header onNavigate={(section) => {
         if (section === 'home') {
           navigate('/');
@@ -120,7 +125,11 @@ const SelfLoveChallenge = ({ onNavigate }: SelfLoveChallengeProps) => {
 
           {/* Main Challenge Card */}
           <div className="relative max-w-2xl mx-auto mb-8">
-            <div className="bg-gradient-to-br from-card to-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-floating border border-border/50 hover:shadow-elegant transition-all duration-500 interactive-card">
+            <div className="bg-gradient-to-br from-card/95 to-card/85 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-floating border border-white/30 hover:shadow-elegant transition-all duration-500 interactive-card"
+                 style={{ 
+                   background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)',
+                   boxShadow: '0 20px 60px -10px rgba(168,230,207,0.4), 0 0 40px rgba(168,230,207,0.2)'
+                 }}>
               {/* Decorative Elements */}
               <div className="absolute -top-4 -left-4 w-8 h-8 bg-primary/20 rounded-full blur-sm"></div>
               <div className="absolute -bottom-4 -right-4 w-6 h-6 bg-accent/30 rounded-full blur-sm"></div>

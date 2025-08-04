@@ -18,10 +18,12 @@ const HeroSection = ({ onOpenChat }: HeroSectionProps) => {
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 bg-gradient-to-br from-background via-muted/30 to-accent/20">
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
+      {/* Dynamic Background */}
+      <div className="absolute inset-0 bg-hero-gradient opacity-60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background/40" />
       
-      
-      <div className="text-center max-w-4xl mx-auto animate-fade-in-slow">
+      <div className="relative z-10 text-center max-w-4xl mx-auto animate-fade-in-slow">
         {/* Main Headline */}
         <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
           You're not alone.{' '}

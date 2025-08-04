@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useScrollColors } from '@/hooks/useScrollColors';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import AboutModal from '@/components/AboutSection';
@@ -11,6 +12,7 @@ const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const navigate = useNavigate();
+  const { currentTheme, scrollProgress } = useScrollColors();
   
   const homeRef = useRef<HTMLDivElement>(null);
   const affirmationsRef = useRef<HTMLDivElement>(null);
@@ -41,15 +43,29 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div 
+      className="min-h-screen page-home color-transition bg-dynamic-gradient"
+      style={{
+        '--dynamic-primary': currentTheme.primary,
+        '--dynamic-secondary': currentTheme.secondary,
+        '--dynamic-accent': currentTheme.accent,
+        '--dynamic-bg': currentTheme.gradient,
+      } as React.CSSProperties}
+    >
       <Header onNavigate={handleNavigation} />
       
-      <main className="pt-20">
-        <div ref={homeRef}>
+      <main className="pt-20 relative">
+        {/* Scroll Progress Indicator */}
+        <div 
+          className="fixed top-0 left-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent z-50 transition-all duration-300"
+          style={{ width: `${scrollProgress * 100}%` }}
+        />
+        
+        <div ref={homeRef} className="relative">
           <HeroSection onOpenChat={handleOpenChat} />
         </div>
         
-        <div ref={affirmationsRef}>
+        <div ref={affirmationsRef} className="relative">
           <AffirmationSection />
         </div>
         

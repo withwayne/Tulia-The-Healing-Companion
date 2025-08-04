@@ -73,7 +73,12 @@ const DailyTargets = ({ onNavigate }: DailyTargetsProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-sky-blue">
+    <div 
+      className="min-h-screen page-targets color-transition"
+      style={{
+        background: 'linear-gradient(135deg, #ffb34720 0%, #ffcc5c30 25%, #ff8e5320 50%, #ffb34715 75%, #ffcc5c25 100%)'
+      }}
+    >
       <Header onNavigate={(section) => {
         if (section === 'home') {
           navigate('/');

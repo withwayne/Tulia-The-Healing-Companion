@@ -90,9 +90,12 @@ const AffirmationSection = () => {
   return (
     <section 
       id="affirmation-section"
-      className="py-20 px-4 bg-gradient-to-b from-background to-muted/20"
+      className="py-20 px-4 relative"
     >
-      <div className="container mx-auto max-w-4xl text-center">
+      {/* Dynamic Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/50 to-background/80" />
+      <div className="absolute inset-0 bg-hero-gradient opacity-30" />
+      <div className="relative z-10 container mx-auto max-w-4xl text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
           Daily Affirmation
         </h2>
@@ -106,7 +109,8 @@ const AffirmationSection = () => {
           }`}
         >
           {/* Floating Card */}
-          <div className="relative bg-gradient-to-br from-card to-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-floating border border-border/50">
+          <div className="relative bg-gradient-to-br from-card to-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-dynamic border border-border/50 interactive-card"
+               style={{ boxShadow: 'var(--shadow-dynamic)' }}>
             
             {/* Quote Icon */}
             <div className="flex justify-center mb-6">

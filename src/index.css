@@ -42,18 +42,42 @@
 
   --radius: 0.75rem;
 
-  /* Custom gradients */
+  /* Dynamic color system - updates with scroll and page changes */
+  --dynamic-primary: #ff6b6b;
+  --dynamic-secondary: #4ecdc4;
+  --dynamic-accent: #ffe66d;
+  --dynamic-bg: linear-gradient(135deg, #ff6b6b15 0%, #4ecdc425 50%, #ffe66d15 100%);
+
+  /* Page-specific themes */
+  --home-primary: #ff6b6b;
+  --home-secondary: #4ecdc4;
+  --home-accent: #ffe66d;
+  
+  --challenge-primary: #a8e6cf;
+  --challenge-secondary: #88d8a3;
+  --challenge-accent: #c7ceea;
+  
+  --targets-primary: #ffb347;
+  --targets-secondary: #ffcc5c;
+  --targets-accent: #ff8e53;
+
+  /* Enhanced gradients with dynamic colors */
   --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
   --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--peach)));
   --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(218 80% 90%));
+  --gradient-dynamic: var(--dynamic-bg);
+  --gradient-hero: linear-gradient(135deg, var(--dynamic-primary)10 0%, var(--dynamic-secondary)20 50%, var(--dynamic-accent)10 100%);
 
-  /* Shadows */
+  /* Enhanced Shadows */
   --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
   --shadow-floating: 0 4px 20px -4px hsl(var(--primary) / 0.25);
   --shadow-glow: 0 0 40px hsl(var(--accent) / 0.4);
+  --shadow-dynamic: 0 10px 40px -10px var(--dynamic-primary)40;
 
-  /* Animations */
+  /* Enhanced Animations */
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-color: background 0.8s ease, border-color 0.8s ease, box-shadow 0.8s ease;
+  --transition-page: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .dark {
@@ -160,6 +184,46 @@
   .interactive-card:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-elegant);
+  }
+
+  /* Dynamic color utilities */
+  .bg-dynamic-gradient {
+    background: var(--gradient-dynamic);
+    transition: var(--transition-color);
+  }
+
+  .bg-hero-gradient {
+    background: var(--gradient-hero);
+    transition: var(--transition-color);
+  }
+
+  .shadow-dynamic {
+    box-shadow: var(--shadow-dynamic);
+    transition: var(--transition-color);
+  }
+
+  /* Page-specific themes */
+  .page-home {
+    --dynamic-primary: var(--home-primary);
+    --dynamic-secondary: var(--home-secondary);
+    --dynamic-accent: var(--home-accent);
+  }
+
+  .page-challenge {
+    --dynamic-primary: var(--challenge-primary);
+    --dynamic-secondary: var(--challenge-secondary);
+    --dynamic-accent: var(--challenge-accent);
+  }
+
+  .page-targets {
+    --dynamic-primary: var(--targets-primary);
+    --dynamic-secondary: var(--targets-secondary);
+    --dynamic-accent: var(--targets-accent);
+  }
+
+  /* Smooth color transitions for page changes */
+  .color-transition {
+    transition: var(--transition-page);
   }
 }
 
