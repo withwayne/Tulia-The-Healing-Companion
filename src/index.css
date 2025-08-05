@@ -447,7 +447,7 @@
 }
 
 .hover-scale {
-  @apply transition-all duration-400;
+  @apply transition-all duration-300;
   transform: rotate(-0.1deg);
 }
 
