@@ -18,14 +18,17 @@ const HeroSection = ({ onOpenChat }: HeroSectionProps) => {
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
-      {/* Dynamic Background */}
-      <div className="absolute inset-0 bg-hero-gradient opacity-60" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background/40" />
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden bg-organic-gradient paper-texture">
+      {/* Organic floating elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/8 organic-shape"></div>
+        <div className="absolute top-3/4 right-1/4 w-24 h-24 bg-secondary/8 organic-shape" style={{ animationDelay: '3s' }}></div>
+        <div className="absolute top-1/2 right-1/3 w-20 h-20 bg-accent/8 organic-shape" style={{ animationDelay: '6s' }}></div>
+      </div>
       
       <div className="relative z-10 text-center max-w-4xl mx-auto animate-fade-in-slow">
         {/* Main Headline */}
-        <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight handwritten">
           You're not alone.{' '}
           <span className="text-primary">
             Imani
@@ -33,16 +36,18 @@ const HeroSection = ({ onOpenChat }: HeroSectionProps) => {
         </h1>
         
         {/* Subtext */}
-        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-          Find comfort in a safe space where your feelings matter. 
-          Let Imani guide you through difficult moments with compassion and understanding.
-        </p>
+        <div className="sketch-border rounded-2xl bg-card/60 backdrop-blur-sm p-6 mb-8 shadow-organic">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Find comfort in a safe space where your feelings matter. 
+            Let Imani guide you through difficult moments with compassion and understanding.
+          </p>
+        </div>
 
         {/* Typing Effect */}
         <div className="mb-12 h-8">
           {showTyping && (
-            <p className="text-lg text-primary animate-typing inline-block">
-              How are you feeling today?
+            <p className="text-lg text-primary animate-typing inline-block handwritten">
+              How are you feeling today? ✨
             </p>
           )}
         </div>
